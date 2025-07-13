@@ -12,6 +12,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+      
     permissions:
       contents: read #This is required for actions/checkout
 
