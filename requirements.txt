@@ -1,0 +1,10 @@
+fastapi[standard]
+python-dotenv
+requests
+sqlalchemy
+# pyodbc
+python-multipart
+# bcrypt
+# passlib
+pymongo
+redis
