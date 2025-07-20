@@ -41,3 +41,10 @@ async def add_trucks(truck : ResourceTruckRequest):
     await collection.insert_one(truck.model_dump())
     resource_truck = [truck async for truck in collection.find()]
     return resource_truck
+
+@router.delete("/{AreaID}")
+async def delete_trucks(TruckID):
+    delete = await collection.delete_one({"TruckID":TruckID})
+    if delete.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="AreaID not found.")
+    return {"message": f"TruckID {TruckID} deleted successfully."}

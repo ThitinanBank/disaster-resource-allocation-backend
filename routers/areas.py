@@ -58,3 +58,10 @@ async def add_areas(area : AffectAreaRequest):
     await collection.insert_one(area.model_dump())
     affect_area = [area async for area in collection.find()]
     return affect_area
+
+@router.delete("/{AreaID}")
+async def delete_areas(AreaID):
+    delete = await collection.delete_one({"AreaID":AreaID})
+    if delete.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="AreaID not found.")
+    return {"message": f"AreaID {AreaID} deleted successfully."}
